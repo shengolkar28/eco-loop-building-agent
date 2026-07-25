@@ -7,7 +7,7 @@ from groq import Groq
 from dotenv import load_dotenv
 
 load_dotenv()
-groq_client = Groq(api_key="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")
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
 ENERGYPLUS_PATH = r"C:\EnergyPlusV23-2-0\EnergyPlus.exe"
 IDF_FILE = r"C:\Users\ASUS\ecoloop\5ZoneAirCooled.idf"
