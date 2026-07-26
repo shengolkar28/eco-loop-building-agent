@@ -35,7 +35,7 @@ It's a genuine closed-loop system. The energy numbers change between iterations 
 | Iter 2    | 185.3                | 19.0                 | 28.0                 |
 | Iter 3    | 188.01               | 19.0                 | 28.0                 |
 
-The agent achieved a 17.7% reduction in total site energy (225.18 GJ → 185.3 GJ at peak) by lowering the heating setpoint and raising the cooling setpoint — physically correct for Chicago's heating-dominated climate. The loop is real: energy values responded directly to LLM setpoint decisions.
+The agent achieved a 16.51% reduction in total site energy (225.18 GJ → 188.01 GJ at peak) by lowering the heating setpoint and raising the cooling setpoint — physically correct for Chicago's heating-dominated climate. The loop is real: energy values responded directly to LLM setpoint decisions.
 
 ## Setup
 
