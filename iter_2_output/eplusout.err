@@ -1,7 +1,17 @@
-Program Version,EnergyPlus, Version 23.2.0-7636e6b3e9, YMD=2026.07.26 02:24,
+Program Version,EnergyPlus, Version 23.2.0-7636e6b3e9, YMD=2026.07.26 10:44,
    ************* Beginning Zone Sizing Calculations
    ************* Beginning System Sizing Calculations
    ************* Beginning Plant Sizing Calculations
+   ** Warning ** In calculating the design coil UA for Coil:Cooling:Water MAIN COOLING COIL 1
+   **   ~~~   ** no apparatus dew-point can be found for the initial entering and leaving conditions;
+   **   ~~~   ** the coil outlet design conditions will be changed to correct the problem.
+   **   ~~~   ** The initial design conditions are: Tair,in = 20.6553
+   **   ~~~   **                                    Wair,in = 1.200961E-002
+   **   ~~~   **                                    Twater,in = 7.0000
+   **   ~~~   **                                    Tair,out = 12.0903
+   **   ~~~   **                                    Wair,out = 8.000000E-003
+   **   ~~~   ** The revised design conditions are: Tair,out = 11.9974
+   **   ~~~   **                                    Wair,out = 8.037567E-003
    ************* Testing Individual Branch Integrity
    ************* All Branches passed integrity testing
    ************* Testing Individual Supply Air Path Integrity
@@ -13,4 +23,4 @@ Program Version,EnergyPlus, Version 23.2.0-7636e6b3e9, YMD=2026.07.26 02:24,
    ************* Simulation Error Summary *************
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 0 Warning; 0 Severe Errors; Elapsed Time=00hr 00min 34.32sec
+   ************* EnergyPlus Completed Successfully-- 1 Warning; 0 Severe Errors; Elapsed Time=00hr 00min 20.47sec

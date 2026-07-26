@@ -74,35 +74,40 @@ def summarize_results(content):
     
     return summary
 
-def get_llm_recommendation(summary, iteration):
-    """Ask Claude to recommend setpoint adjustments"""
-    prompt = f"""
-You are an AI building energy optimization agent controlling a single-zone building via EnergyPlus simulation.
+def get_llm_recommendation(summary, iteration, history):
+    """Ask LLM to recommend setpoint adjustments"""
+    
+    history_text = ""
+    if history:
+        history_text = "\nPrevious iterations:\n"
+        for h in history:
+            history_text += f"  Iter {h['iteration']}: Heating={h['heating_setpoint']}°C, Cooling={h['cooling_setpoint']}°C, Energy={h['metrics'].get('total_site_energy_GJ','N/A')} GJ\n"
+
+    prompt = f"""You are an AI energy optimization agent controlling a 5-zone commercial building in Chicago via EnergyPlus simulation.
 
 Current simulation results (iteration {iteration}):
-{summary}
+- Total Site Energy: {summary.get('total_site_energy_GJ', 'N/A')} GJ
+- Total Source Energy: {summary.get('total_source_energy_GJ', 'N/A')} GJ
+{history_text}
+CRITICAL GOAL: Reduce total site energy consumption every iteration. If energy went UP in the last iteration, reverse that setpoint change immediately.
 
-Your goals:
-1. Reduce total energy consumption (kWh)
-2. Maintain zone temperature between 20-26°C for occupant comfort
-3. Suggest specific thermostat setpoint changes
+Rules:
+- Heating setpoint: between 18-21°C (lower = less heating energy in winter)
+- Cooling setpoint: between 26-30°C (higher = less cooling energy in summer)
+- Chicago climate is heating-dominated — focus on LOWERING heating setpoint
+- Never raise heating setpoint above previous iteration if energy increased
+- Never lower cooling setpoint below previous iteration if energy increased
 
-Based on these metrics, recommend:
-- Heating setpoint (°C) — typical range 18-22°C
-- Cooling setpoint (°C) — typical range 24-28°C  
-- Brief reasoning (2-3 sentences max)
-- Expected energy saving (%)
-
-Respond in this exact format:
-HEATING_SETPOINT: <value>
-COOLING_SETPOINT: <value>
-REASONING: <text>
+Respond in this exact format only:
+HEATING_SETPOINT: <number only, no °C>
+COOLING_SETPOINT: <number only, no °C>
+REASONING: <one sentence>
 EXPECTED_SAVING: <percentage>
 """
     response = groq_client.chat.completions.create(
         model="llama-3.1-8b-instant",
         messages=[{"role": "user", "content": prompt}],
-        max_tokens=300
+        max_tokens=200
     )
     return response.choices[0].message.content
 
@@ -204,7 +209,7 @@ def main():
 
         # Get LLM recommendation
         print("Querying Claude for optimization recommendations...")
-        llm_response = get_llm_recommendation(summary, i)
+        llm_response = get_llm_recommendation(summary, i, logs)
         print(f"\nClaude says:\n{llm_response}")
 
         # Parse setpoints
