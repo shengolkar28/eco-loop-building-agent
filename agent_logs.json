@@ -12,31 +12,31 @@
         "total_source_energy_GJ": 570.36,
         "net_site_energy_GJ": 225.18
       },
-      "llm_response": "HEATING_SETPOINT: 19\nCOOLING_SETPOINT: 29\nREASONING: Reduce heating demand by lowering heating setpoint to 19\u00b0C given the heating-dominated Chicago climate.\nEXPECTED_SAVING: -0.45%",
+      "llm_response": "HEATING_SETPOINT: 19\nCOOLING_SETPOINT: 28\nREASONING: Lowering the heating setpoint by 1\u00b0C to 19\u00b0C will likely reduce the energy consumption since the building is heating-dominated and this is the initial iteration.\nEXPECTED_SAVING: Unknown, as we just started iterating and the model is not yet trained on multiple iterations.",
       "heating_setpoint": 19.0,
-      "cooling_setpoint": 29.0
+      "cooling_setpoint": 28.0
     },
     {
       "iteration": 2,
       "metrics": {
-        "total_site_energy_GJ": 185.3,
-        "total_source_energy_GJ": 492.02,
-        "net_site_energy_GJ": 185.3
+        "total_site_energy_GJ": 188.01,
+        "total_source_energy_GJ": 497.16,
+        "net_site_energy_GJ": 188.01
       },
-      "llm_response": "HEATING_SETPOINT: 19\nCOOLING_SETPOINT: 29\nREASONING: Since we're in a heating-dominated climate, we should prioritize lowering the heating setpoint to minimize energy consumption while avoiding drastic changes that may not yield immediate results in this iteration.\nEXPECTED_SAVING: 17.5%",
+      "llm_response": "HEATING_SETPOINT: 19\nCOOLING_SETPOINT: 28\nREASONING: I'm lowering the heating setpoint to 19\u00b0C to exploit Chicago's heating-dominated climate in an attempt to reduce energy consumption.\nEXPECTED_SAVING: 3.3% (difference between 225.18 GJ and 188.01 GJ divided by 225.18 GJ)",
       "heating_setpoint": 19.0,
-      "cooling_setpoint": 29.0
+      "cooling_setpoint": 28.0
     },
     {
       "iteration": 3,
       "metrics": {
-        "total_site_energy_GJ": 185.3,
-        "total_source_energy_GJ": 492.02,
-        "net_site_energy_GJ": 185.3
+        "total_site_energy_GJ": 188.01,
+        "total_source_energy_GJ": 497.16,
+        "net_site_energy_GJ": 188.01
       },
-      "llm_response": "HEATING_SETPOINT: 18\nCOOLING_SETPOINT: 29\nREASONING: Lowering the heating setpoint to 18\u00b0C to reduce heating energy consumption in heating-dominated Chicago climate, while keeping the cooling setpoint constant to maintain a reasonable temperature for cooling.\nEXPECTED_SAVING: 17.5% ( reduction of 18.7 GJ from Iter 2)",
+      "llm_response": "HEATING_SETPOINT: 18\nCOOLING_SETPOINT: 28\nREASONING: Lowering the heating setpoint to 18\u00b0C while keeping the cooling setpoint at 28\u00b0C should yield significant energy savings as the building is heating-dominated and lowering the setpoint will reduce heating energy consumption.\nEXPECTED_SAVING: 16.13%",
       "heating_setpoint": 18.0,
-      "cooling_setpoint": 29.0
+      "cooling_setpoint": 28.0
     }
   ]
 }
