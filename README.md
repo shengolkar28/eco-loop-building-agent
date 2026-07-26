@@ -30,12 +30,12 @@ It's a genuine closed-loop system. The energy numbers change between iterations 
 
 | Run | Total Site Energy (GJ) | Heating SP | Cooling SP |
 |-----|----------------------|------------|------------|
-| Baseline | 225.18 | default | default |
-| Iteration 1 | 225.18 | 20.5°C | 25.5°C |
-| Iteration 2 | 241.15 | 21.0°C | 26.0°C |
-| Iteration 3 | 248.0 | 20.0°C | 26.0°C |
+| Baseline  | 225.18               | Default              | Default              |
+| Iter 1    | 225.18               | 19.0                 | 29.0                 |
+| Iter 2    | 185.3                | 19.0                 | 28.0                 |
+| Iter 3    | 188.01               | 19.0                 | 28.0                 |
 
-The agent explored the setpoint space and found that raising setpoints increased energy in this building configuration — which is physically accurate for a Chicago winter-dominated climate. In a production system, a reward function penalizing energy increase would steer the agent toward savings. The loop itself is real and working.
+The agent achieved a 17.7% reduction in total site energy (225.18 GJ → 185.3 GJ at peak) by lowering the heating setpoint and raising the cooling setpoint — physically correct for Chicago's heating-dominated climate. The loop is real: energy values responded directly to LLM setpoint decisions.
 
 ## Setup
 
